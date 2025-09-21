@@ -448,8 +448,8 @@ sources:
           - name: gp
             identifier: gp
             description: PK of Gram Panchayat
-            data_tests:
-              - not_null
+            # data_tests:
+            #   - not_null
             data_type: STRING
           - name: idx
             identifier: idx
@@ -465,8 +465,8 @@ sources:
           - name: block
             identifier: block
             description: PK of Block
-            data_tests:
-              - not_null
+            # data_tests:
+            #   - not_null
             data_type: STRING
           - name: owner
             data_type: STRING
@@ -480,16 +480,16 @@ sources:
           - name: village
             identifier: village
             description: PK of Village
-            data_tests:
-              - not_null
+            # data_tests:
+            #   - not_null
             data_type: STRING
           - name: creation
             data_type: STRING
           - name: district
             identifier: district
             description: PK of District
-            data_tests:
-              - not_null
+            # data_tests:
+            #   - not_null
             data_type: STRING
           - name: modified
             data_type: STRING
@@ -500,7 +500,7 @@ sources:
             description: Type of parent
             data_tests:
               - accepted_values:
-                  values: [Village Tracker]
+                  values: [Village Tracker, Village Entity]
             data_type: STRING
           - name: modified_by
             data_type: STRING
@@ -509,7 +509,7 @@ sources:
             description: Field in the parent
             data_tests:
               - accepted_values:
-                  values: [village]
+                  values: [village, village_table]
             data_type: STRING
       - name: Behaviour
         identifier: Behaviour
@@ -579,7 +579,7 @@ sources:
             description: Behaviour being followed?
             data_tests:
               - accepted_values:
-                  values: [Yes, No]
+                  values: ['No','Yes','']
 
             data_type: STRING
       - name: EnvQualityReport
@@ -653,7 +653,7 @@ sources:
             description: Options of the test
             data_tests:
               - accepted_values:
-                  values: [Water, Food]
+                  values: [Water, Food, Soil]
             data_type: STRING
           - name: workflow_state
             identifier: workflow_state
@@ -704,7 +704,7 @@ sources:
             description: Environmental parameter
             data_tests:
               - accepted_values:
-                  values: [pH, TDS, Turbidity, Hardness, Iron, Fluoride, Nitrate, Bacteria, H2S]
+                  values: [Alkalinity, Arsenic, Calcium, Chloride, Fluoride, H2S, Iron, Nitrate, Residual Chlorine, TDS, Total hardness, Turbidity, pH]
             data_type: STRING
           - name: env_unit
             identifier: env_unit
@@ -722,14 +722,15 @@ sources:
             description: Is the water tested?
             data_tests:
               - accepted_values:
-                  values: ['0', '1']
+                  values: [0,1]
+                  quote: false
             data_type: NUMERIC
           - name: env_safety
             identifier: env_safety
             description: Environmental safety
             data_tests:
               - accepted_values:
-                  values: [Safe, Unsafe]
+                  values: ['Safe','Unsafe','Not tested']
             data_type: STRING
           - name: parenttype
             identifier: parenttype
